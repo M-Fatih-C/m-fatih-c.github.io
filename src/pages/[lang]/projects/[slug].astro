@@ -1,0 +1,208 @@
+---
+import { ArrowLeft, ArrowUpRight, LockKeyhole } from '@lucide/astro';
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import ProjectArt from '../../../components/ProjectArt.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import { labels, path, statuses, categories, type Lang } from '../../../lib/i18n';
+import { getProjects } from '../../../lib/projects';
+export async function getStaticPaths() {
+  return (await getCollection('projects')).map((project) => ({
+    params: { lang: project.data.lang, slug: project.data.slug },
+    props: { project },
+  }));
+}
+const { project } = Astro.props,
+  p = project.data,
+  lang = p.lang as Lang,
+  t = labels[lang];
+const { Content } = await render(project);
+const all = await getProjects(lang);
+const related = all.filter((q) => p.related.includes(q.data.projectId)).slice(0, 3);
+const sections = [
+  ['overview', t.overview],
+  ['problem', t.problem],
+  ['role', t.role],
+  ['solution', t.solution],
+  ...(p.implementation.length
+    ? [['implementation', lang === 'tr' ? 'Uygulama ayrıntıları' : 'Implementation details']]
+    : []),
+  ['architecture', t.architecture],
+  ['features', t.features],
+  ['challenges', t.challenges],
+  ['decisions', t.decisions],
+  ['testing', t.testing],
+  ['results', t.results],
+  ['limitations', t.limitations],
+];
+---
+
+<Layout lang={lang} title={p.title} description={p.summary} section="projects">
+  <div class="shell">
+    <header class="project-detail-head">
+      <a class="back-link" href={path(lang, 'projects')}>
+        <ArrowLeft size={14} />
+        {t.back}
+      </a>
+      <p class="eyebrow">{p.categories.map((c) => categories[c]?.[lang]).join(' / ')}</p>
+      <h1>{p.title}</h1>
+      <p class="project-lead">{p.summary}</p>
+      <div class="detail-meta">
+        <span class={`status status-${p.status}`}>{statuses[p.status]?.[lang]}</span>
+        {p.repositoryVisibility === 'private' && (
+          <span class="private-label">
+            <LockKeyhole size={13} />
+            {t.private}
+          </span>
+        )}
+        {p.year && <span class="muted">{p.year}</span>}
+      </div>
+      <ul class="tags">
+        {p.technologies.map((tech) => (
+          <li>{tech}</li>
+        ))}
+      </ul>
+      <div class="detail-cover">
+        <ProjectArt kind={p.categories[0]} seed={p.slug} large />
+      </div>
+      <p class="cover-caption">
+        {lang === 'tr'
+          ? 'Kategori için özgün kod tabanlı illüstrasyon; ürün ekran görüntüsü değildir.'
+          : 'Original code-generated category illustration; not a product screenshot.'}
+      </p>
+    </header>
+    <div class="case-layout">
+      <aside class="case-sidebar">
+        <p>{lang === 'tr' ? 'BU ÇALIŞMADA' : 'IN THIS CASE STUDY'}</p>
+        <nav aria-label={lang === 'tr' ? 'Sayfa içi gezinme' : 'On this page'}>
+          {sections.map(([id, label]) => (
+            <a href={`#${id}`}>{label}</a>
+          ))}
+        </nav>
+      </aside>
+      <div class="case-content">
+        {p.repositoryVisibility === 'private' && (
+          <p class="callout private-callout">{t.privateNote}</p>
+        )}
+        <section class="case-section" id="overview">
+          <h2>{t.overview}</h2>
+          <p>{p.description}</p>
+          <Content />
+        </section>
+        <section class="case-section" id="problem">
+          <h2>{t.problem}</h2>
+          <p>{p.problem}</p>
+        </section>
+        <section class="case-section" id="role">
+          <h2>{t.role}</h2>
+          <p>{p.role}</p>
+        </section>
+        <section class="case-section" id="solution">
+          <h2>{t.solution}</h2>
+          <p>{p.solution}</p>
+        </section>
+        {p.implementation.length > 0 && (
+          <section class="case-section" id="implementation">
+            <h2>{lang === 'tr' ? 'Uygulama ayrıntıları' : 'Implementation details'}</h2>
+            <div class="implementation-notes">
+              {p.implementation.map((note, index) => (
+                <article class="implementation-note">
+                  <span class="note-index" aria-hidden="true">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3>{note.title}</h3>
+                    <p>{note.detail}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+        <section class="case-section" id="architecture">
+          <h2>{t.architecture}</h2>
+          <div class="architecture-flow">
+            {p.architecture.map((step, index) => (
+              <>
+                {index > 0 && <div class="flow-connector" aria-hidden="true" />}
+                <div class="flow-step">
+                  <span class="step">{String(index + 1).padStart(2, '0')}</span>
+                  <p>{step}</p>
+                </div>
+              </>
+            ))}
+          </div>
+          <p class="cover-caption">{t.conceptual}</p>
+        </section>
+        {[
+          ['features', t.features, p.features],
+          ['challenges', t.challenges, p.technicalChallenges],
+          ['decisions', t.decisions, p.decisions],
+          ['testing', t.testing, p.testing],
+          ['results', t.results, p.results],
+          ['limitations', t.limitations, p.limitations],
+        ].map(([id, title, items]) => (
+          <section class="case-section" id={id as string}>
+            <h2>{title}</h2>
+            <ul>
+              {(items as string[]).map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </section>
+        ))}
+        {p.images.length > 0 && (
+          <section class="case-section">
+            <h2>{t.gallery}</h2>
+            {p.images.map((image) => (
+              <figure>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  width={image.width}
+                  height={image.height}
+                />
+                <figcaption>{image.caption}</figcaption>
+              </figure>
+            ))}
+          </section>
+        )}
+        <p class="callout">{p.sourceState === 'open-pr' ? t.prNote : t.selfNote}</p>
+        {p.sourceReferences.length > 0 && (
+          <section class="case-section">
+            <h2>{t.sources}</h2>
+            <ul class="source-links">
+              {p.sourceReferences.map((source) => (
+                <li>
+                  <a href={source.url} target="_blank" rel="noopener noreferrer">
+                    {source.label}
+                    <ArrowUpRight size={14} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+        {p.githubUrl && (
+          <a class="button secondary" href={p.githubUrl} target="_blank" rel="noopener noreferrer">
+            {t.github}
+            <ArrowUpRight size={17} />
+          </a>
+        )}
+      </div>
+    </div>
+    {related.length > 0 && (
+      <section class="section" style="padding-top:0">
+        <div class="section-heading">
+          <h2>{t.related}</h2>
+        </div>
+        <div class="featured-grid">
+          {related.map((item, index) => (
+            <ProjectCard project={item} lang={lang} index={index} />
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>

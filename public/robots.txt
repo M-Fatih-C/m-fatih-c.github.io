@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://m-fatih-c.github.io/sitemap-index.xml

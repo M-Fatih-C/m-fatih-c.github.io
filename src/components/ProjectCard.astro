@@ -1,0 +1,65 @@
+---
+import { ArrowUpRight, LockKeyhole } from '@lucide/astro';
+import ProjectArt from './ProjectArt.astro';
+import { labels, path, statuses, categories, type Lang } from '../lib/i18n';
+import type { Project } from '../lib/projects';
+interface Props {
+  project: Project;
+  lang: Lang;
+  index?: number;
+}
+const { project, lang, index = 0 } = Astro.props;
+const p = project.data,
+  t = labels[lang];
+---
+
+<article
+  class="project-card"
+  data-project-card
+  data-search={`${p.title} ${p.summary} ${p.technologies.join(' ')}`.toLocaleLowerCase(lang)}
+  data-categories={p.categories.join(' ')}
+  data-technologies={JSON.stringify(p.technologies)}
+  data-year={p.year ?? 'unknown'}
+  data-status={p.status}
+>
+  <a class="art-link" href={path(lang, `projects/${p.slug}`)} tabindex="-1" aria-hidden="true">
+    <ProjectArt kind={p.categories[0]} seed={`${p.slug}-${index}`} />
+    <span class="art-index">{String(index + 1).padStart(2, '0')}</span>
+    <span class="art-category">{categories[p.categories[0] ?? 'software']?.[lang]}</span>
+  </a>
+  <div class="card-copy">
+    <div class="card-meta">
+      <span class={`status status-${p.status}`}>{statuses[p.status]?.[lang]}</span>
+      {p.repositoryVisibility === 'private' && (
+        <span class="private-label">
+          <LockKeyhole size={12} />
+          {t.private}
+        </span>
+      )}
+    </div>
+    <h3>
+      <a href={path(lang, `projects/${p.slug}`)}>
+        {p.title}
+        <ArrowUpRight size={21} />
+      </a>
+    </h3>
+    <p>{p.summary}</p>
+    <ul class="tags" aria-label={t.technology}>
+      {p.technologies.slice(0, 4).map((tech) => (
+        <li>{tech}</li>
+      ))}
+    </ul>
+    <div class="card-bottom">
+      <a href={path(lang, `projects/${p.slug}`)}>
+        {t.view}
+        <ArrowUpRight size={15} />
+      </a>
+      {p.githubUrl && (
+        <a class="code-link" href={p.githubUrl} target="_blank" rel="noopener noreferrer">
+          GitHub<span class="sr-only"> {p.title}</span>
+          <ArrowUpRight size={13} />
+        </a>
+      )}
+    </div>
+  </div>
+</article>

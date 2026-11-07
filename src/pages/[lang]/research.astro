@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getProjects } from '../../lib/projects';
+import { languages, labels, type Lang } from '../../lib/i18n';
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang,
+  tr = lang === 'tr',
+  t = labels[lang];
+const projects = await getProjects(lang);
+const research = projects.filter(
+  (p) => p.data.categories.includes('research') || p.data.categories.includes('competitions'),
+);
+---
+
+<Layout lang={lang} title={t.research} section="research">
+  <div class="shell">
+    <header class="page-head">
+      <p class="eyebrow">
+        {tr ? 'ARAŞTIRMA / DENEYLER / YARIŞMALAR' : 'RESEARCH / EXPERIMENTS / COMPETITIONS'}
+      </p>
+      <h1>{tr ? 'Araştırma ve yarışmalar' : 'Research and competitions'}</h1>
+      <p>
+        {tr
+          ? 'Model mimarileri, veri hazırlama, bilimsel araştırma araçları ve yarışma deneyleri. Sonuçları, üretildikleri koşullar ve sınırlamalarla birlikte ele alıyorum.'
+          : 'Model architectures, data preparation, scientific research tools and competition experiments. Outcomes are presented alongside the conditions and limitations behind them.'}
+      </p>
+    </header>
+    <section class="research-text">
+      <h2>
+        {tr
+          ? 'Sağlık araştırmalarında yazılım katkısı'
+          : 'Software contributions to healthcare research'}
+      </h2>
+      <p>
+        {tr
+          ? 'Tanita ve OSAS çalışmaları belge çıkarımı, veri hazırlama ve tablosal modelleme ekseninde bağlantılıdır; ayrı veri ve uygulama akışları olarak belgelenmiştir. EEG/ALS araçları ise sinyal akışı ve deneysel iletişim araştırması kapsamındadır. Hasta kayıtları, EEG verileri ve izinsiz veri kümeleri bu sitede yer almaz.'
+          : 'The Tanita and OSAS work is connected through document extraction, data preparation and tabular modeling, while retaining separate processing workflows. The EEG/ALS toolkit addresses signal streams and experimental communication research. Patient records, EEG recordings and unauthorized datasets are not included on this site.'}
+      </p>
+    </section>
+    <div class="research-layout" style="padding-bottom:65px">
+      {research.map((project, index) => (
+        <ProjectCard project={project} lang={lang} index={index} />
+      ))}
+    </div>
+    <section class="research-text" style="margin-bottom:80px">
+      <h2>
+        {tr ? 'Deney koleksiyonları nasıl okunmalı?' : 'How to read the experiment collections'}
+      </h2>
+      <p>
+        {tr
+          ? 'AI-Projects içindeki notebook’lar ve Türkçe adres çözümleme deneyleri ana proje altında alt çalışmalar olarak tutulur. Aynı çalışma farklı sayfalarda ayrı bir başarı gibi sayılmaz. Yarışma katılımı, doğrulanmış bir derece veya ödül anlamına gelmez; kayıtlı olmayan başarı sayıları eklenmez.'
+          : 'Notebooks in AI-Projects and the Turkish address experiments remain sub-studies within their parent collections. The same work is not counted as a separate achievement on different pages. Participation does not imply a verified ranking or award, and unrecorded performance figures are not added.'}
+      </p>
+    </section>
+  </div>
+</Layout>

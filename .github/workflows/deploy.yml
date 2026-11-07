@@ -1,0 +1,52 @@
+name: Deploy approved portfolio to GitHub Pages
+# Intentionally manual. Public publication needs the owner's explicit approval.
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Publish the reviewed portfolio publicly'
+        type: boolean
+        required: true
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: inputs.publish && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run lint
+      - run: npm run check:content
+      - name: Build, validate and upload with the official Astro action
+        uses: withastro/action@v6
+        with:
+          node-version: '22.23.4'
+          package-manager: npm
+          build-cmd: npm run build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

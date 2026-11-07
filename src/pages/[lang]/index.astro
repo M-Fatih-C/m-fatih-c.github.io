@@ -1,0 +1,298 @@
+---
+import {
+  ArrowUpRight,
+  ArrowRight,
+  BrainCircuit,
+  Workflow,
+  Microscope,
+  CodeXml,
+  CodeXml as Github,
+  ContactRound as Linkedin,
+  Download,
+} from '@lucide/astro';
+import { Image } from 'astro:assets';
+import brandImage from '../../assets/mfc-logo.jpg';
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Timeline from '../../components/Timeline.astro';
+import { getProjects } from '../../lib/projects';
+import { labels, path, languages, type Lang } from '../../lib/i18n';
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang,
+  t = labels[lang],
+  tr = lang === 'tr';
+const projects = await getProjects(lang);
+const selected = projects.filter((project) => project.data.featured).slice(0, 6);
+const areas = tr
+  ? [
+      {
+        title: 'Yazılım & Sistemler',
+        text: 'Backend servislerinden masaüstü araçlarına; veri bütünlüğü, açık sınırlar ve gerçek iş akışları.',
+        icon: CodeXml,
+        tags: 'Python · FastAPI · .NET · Swift',
+      },
+      {
+        title: 'Uygulamalı Yapay Zekâ',
+        text: 'Transformer mimarileri, bilgi getirme, makine öğrenmesi ve veriden anlam üreten deneyler.',
+        icon: BrainCircuit,
+        tags: 'PyTorch · MLX · RAG · scikit-learn',
+      },
+      {
+        title: 'Araştırma & Entegrasyon',
+        text: 'Sağlık araştırma araçları, kurumsal süreç analizi ve sistemler arasında bağlantı kurma.',
+        icon: Workflow,
+        tags: 'Veri işleme · API · Otomasyon',
+      },
+    ]
+  : [
+      {
+        title: 'Software & Systems',
+        text: 'From backend services to desktop tools: data integrity, clear boundaries and real workflows.',
+        icon: CodeXml,
+        tags: 'Python · FastAPI · .NET · Swift',
+      },
+      {
+        title: 'Applied Artificial Intelligence',
+        text: 'Transformer architectures, retrieval, machine learning and experiments that turn data into insight.',
+        icon: BrainCircuit,
+        tags: 'PyTorch · MLX · RAG · scikit-learn',
+      },
+      {
+        title: 'Research & Integration',
+        text: 'Healthcare research tools, enterprise process analysis and connections between systems.',
+        icon: Workflow,
+        tags: 'Data processing · APIs · Automation',
+      },
+    ];
+---
+
+<Layout lang={lang}>
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          {tr
+            ? 'YAZILIM · YAPAY ZEKÂ · ARAŞTIRMA'
+            : 'SOFTWARE · ARTIFICIAL INTELLIGENCE · RESEARCH'}
+        </p>
+        <h1>
+          Muhammet Fatih
+          <br />
+          <span>Çetintaş</span>
+        </h1>
+        <p class="professional-title">{t.title}</p>
+        <p class="hero-intro">
+          {tr
+            ? 'Python ve C#/.NET ile yazılım geliştiriyorum. Belge işleme, makine öğrenmesi ve kurumsal sistem entegrasyonu üzerine çalışıyor; araştırma verilerini analiz edilebilir yapılara dönüştürüyorum.'
+            : 'I develop software with Python and C#/.NET. My work covers document processing, machine learning and enterprise systems integration, including preparing research data for analysis.'}
+        </p>
+        <div class="hero-actions">
+          <a class="button" href={path(lang, 'projects')}>
+            {t.explore}
+            <ArrowUpRight size={17} />
+          </a>
+          <a class="button secondary" href={path(lang, 'about')}>
+            {t.aboutMe}
+            <ArrowRight size={17} />
+          </a>
+        </div>
+        <div class="hero-bottom">
+          <a href="https://github.com/M-Fatih-C" target="_blank" rel="noopener noreferrer">
+            <Github size={13} />
+            GitHub
+            <ArrowUpRight size={11} />
+          </a>
+          <a
+            href="https://tr.linkedin.com/in/muhammet-fatih-%C3%A7etintas"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Linkedin size={13} />
+            LinkedIn
+            <ArrowUpRight size={11} />
+          </a>
+          <a href={`/cv/muhammet-fatih-cetintas-2026.pdf`} download>
+            <Download size={13} />
+            {t.cvDownload}
+          </a>
+        </div>
+      </div>
+      <div class="brand-showcase">
+        <div class="brand-showcase-top">
+          <span>MFÇ / {tr ? 'KİŞİSEL PORTFÖY' : 'PERSONAL PORTFOLIO'}</span>
+          <span>2026</span>
+        </div>
+        <div class="brand-image-frame">
+          <Image
+            src={brandImage}
+            alt="Muhammet Fatih Çetintaş — MFÇ"
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 760px) calc(100vw - 40px), 48vw"
+            format="webp"
+            quality={85}
+            loading="eager"
+            fetchpriority="high"
+          />
+          <span class="brand-trace" aria-hidden="true"></span>
+        </div>
+        <div class="brand-domains">
+          <span>Python / .NET</span>
+          <span>{tr ? 'Uygulamalı AI' : 'Applied AI'}</span>
+          <span>{tr ? 'Sistem entegrasyonu' : 'Systems integration'}</span>
+        </div>
+        <p class="brand-context">
+          {tr
+            ? 'Backend uygulamaları, araştırma yazılımları ve kurumsal iş akışları üzerine çalışmalar.'
+            : 'Work on backend applications, research software and enterprise workflows.'}
+        </p>
+      </div>
+    </div>
+  </section>
+  <div class="ticker">
+    <div class="shell">
+      <span class="ticker-intro">
+        {tr ? 'PROJELERDE KULLANDIĞIM TEKNOLOJİLER' : 'TECHNOLOGIES USED IN MY PROJECTS'}
+      </span>
+      <b>Python</b>
+      <i>✳</i>
+      <b>PyTorch</b>
+      <i>✳</i>
+      <b>FastAPI</b>
+      <i>✳</i>
+      <b>Swift</b>
+      <i>✳</i>
+      <b>SQL</b>
+      <i>✳</i>
+      <b>TypeScript</b>
+    </div>
+  </div>
+  <section class="section shell">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">01 / {t.selected}</p>
+        <h2>{tr ? 'Öne çıkan projeler' : 'Selected projects'}</h2>
+      </div>
+      <div>
+        <p>{t.workIntro}</p>
+        <a class="text-link" style="margin-top:17px" href={path(lang, 'projects')}>
+          {t.all}
+          <ArrowUpRight size={16} />
+        </a>
+      </div>
+    </div>
+    <div class="featured-grid">
+      {selected.map((project, index) => (
+        <ProjectCard project={project} lang={lang} index={index} />
+      ))}
+    </div>
+  </section>
+  <section class="section shell" style="padding-top:20px">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">02 / {tr ? 'ÇALIŞMA ALANLARIM' : 'AREAS OF FOCUS'}</p>
+        <h2>{tr ? 'Teknik uzmanlık alanları' : 'Technical expertise'}</h2>
+      </div>
+      <p>
+        {tr
+          ? 'Backend geliştirme, yapay zekâ ve sistem entegrasyonu çalışmalarında kullandığım yöntemler ve araçlar.'
+          : 'Methods and tools I use across backend development, applied AI and systems integration.'}
+      </p>
+    </div>
+    <div class="expertise-grid">
+      {areas.map((area, index) => (
+        <article class="expertise-card">
+          <div class="number">
+            <span>0{index + 1}</span>
+            <area.icon size={25} stroke-width={1.4} />
+          </div>
+          <h3>{area.title}</h3>
+          <p>{area.text}</p>
+          <p style="margin-top:20px;font-size:10px">{area.tags}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="section shell split-section">
+    <div>
+      <p class="eyebrow">03 / {tr ? 'DENEYİM & YAKLAŞIM' : 'EXPERIENCE & APPROACH'}</p>
+      <h2>{tr ? 'Profesyonel deneyim' : 'Professional experience'}</h2>
+      <p>
+        {tr
+          ? 'Otonom sistem uygulamaları, hastane bilgi sistemleri ve bağımsız yazılım geliştirme alanlarında çalıştım. Gereksinim analizi, API veri akışları, test senaryoları ve teknik dokümantasyon bu deneyimlerin ortak parçaları.'
+          : 'Working with enterprise IT, healthcare systems and autonomous systems has shaped how I build software: understand the requirements, follow the data and validate the outcome.'}
+      </p>
+      <a class="text-link" href={path(lang, 'about')}>
+        {tr ? 'Deneyim ve eğitim' : 'Experience and education'}
+        <ArrowUpRight size={16} />
+      </a>
+    </div>
+    <Timeline lang={lang} compact />
+  </section>
+  <section class="section shell" style="padding-top:20px">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">04 / {tr ? 'ARAŞTIRMA & YARIŞMALAR' : 'RESEARCH & COMPETITIONS'}</p>
+        <h2>{tr ? 'Araştırma ve yarışma çalışmaları' : 'Research and competitions'}</h2>
+      </div>
+      <a class="text-link" href={path(lang, 'research')}>
+        {t.research}
+        <ArrowUpRight size={16} />
+      </a>
+    </div>
+    <div class="research-strip">
+      <article class="research-mini">
+        <div class="research-icon">
+          <Microscope size={23} />
+        </div>
+        <div>
+          <h3>{tr ? 'Sağlık verisi ve araştırma araçları' : 'Health data and research tools'}</h3>
+          <p>
+            {tr
+              ? 'Tanita rapor işleme, uyku apnesi modelleme ve EEG/ALS araştırmaları. Veri hazırlama ve deneysel yazılımlar; klinik tanı iddiası olmadan.'
+              : 'Tanita report processing, sleep-apnea modeling and EEG/ALS research. Data preparation and experimental software, without clinical diagnostic claims.'}
+          </p>
+          <a class="text-link" href={path(lang, 'research')}>
+            {tr ? 'Araştırmaları incele' : 'Explore research'}
+            <ArrowUpRight size={14} />
+          </a>
+        </div>
+      </article>
+      <article class="research-mini">
+        <div class="research-icon" style="color:var(--cyan)">
+          <BrainCircuit size={23} />
+        </div>
+        <div>
+          <h3>
+            {tr ? 'Yarışmalar ve modelleme deneyleri' : 'Competitions and modeling experiments'}
+          </h3>
+          <p>
+            {tr
+              ? 'ING Datathon, Türkçe adres çözümleme ve hackathon çalışmaları. Farklı yaklaşımları karşılaştırma ve problem odaklı öğrenme.'
+              : 'ING Datathon, Turkish address resolution and hackathon work. Comparing approaches and learning through a defined problem.'}
+          </p>
+          <a class="text-link" href={path(lang, 'projects') + '?category=competitions'}>
+            {tr ? 'Yarışma çalışmalarını gör' : 'View competition work'}
+            <ArrowUpRight size={14} />
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="shell contact-panel">
+    <div>
+      <p class="eyebrow">{tr ? 'İLETİŞİM' : 'CONTACT'}</p>
+      <h2>{tr ? 'İletişim ve iş birliği' : 'Contact and collaboration'}</h2>
+      <p>
+        {tr
+          ? 'Yazılım, yapay zekâ, araştırma ve iş birliği üzerine konuşalım.'
+          : 'Let’s talk about software, AI, research and collaboration.'}
+      </p>
+    </div>
+    <a class="button" href={path(lang, 'contact')}>
+      {tr ? 'İletişime geç' : 'Get in touch'}
+      <ArrowUpRight size={17} />
+    </a>
+  </section>
+</Layout>

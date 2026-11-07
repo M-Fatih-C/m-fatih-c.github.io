@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout lang="tr" title="404 — Page not found" noindex>
+  <div class="shell not-found">
+    <p class="error-code">404</p>
+    <h1>
+      Bu sayfa bulunamadı.
+      <br />
+      <span lang="en">This page could not be found.</span>
+    </h1>
+    <p>
+      Projelerden keşfetmeye devam edebilirsin.{' '}
+      <span lang="en">Keep exploring through the project archive.</span>
+    </p>
+    <div class="hero-actions">
+      <a class="button" href="/tr/projects/">
+        Projeleri keşfet
+      </a>
+      <a class="button secondary" href="/en/projects/" lang="en">
+        Explore projects
+      </a>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,119 @@
+---
+import { Image } from 'astro:assets';
+import cvPageOne from '../../assets/cv/page-1.png';
+import cvPageTwo from '../../assets/cv/page-2.png';
+import Layout from '../../layouts/Layout.astro';
+import { experience, education } from '../../data/profile';
+import { languages, labels, type Lang } from '../../lib/i18n';
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang,
+  t = labels[lang],
+  tr = lang === 'tr';
+---
+
+<Layout lang={lang} title={tr ? 'Güncel CV' : 'Current CV'} section="about">
+  <div class="shell">
+    <div class="cv-actions">
+      <a class="button" href={`/cv/muhammet-fatih-cetintas-2026.pdf`} download>
+        {t.cvDownload}
+      </a>
+      <a
+        class="button secondary"
+        href="/cv/muhammet-fatih-cetintas-2026.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {tr ? 'PDF’yi yeni sekmede aç' : 'Open PDF in a new tab'}
+      </a>
+    </div>
+    <div class="cv-document-intro">
+      <h1>{tr ? 'Güncel CV' : 'Current CV'}</h1>
+      <p>
+        {tr
+          ? 'Software & AI Solutions Specialist · 2026 · Türkçe · 2 sayfa'
+          : 'Software & AI Solutions Specialist · 2026 · Turkish · 2 pages'}
+      </p>
+      <p>
+        {tr
+          ? 'Aşağıdaki belge, paylaştığım orijinal CV dosyasıdır. İndirme bağlantısı aynı PDF’yi açar.'
+          : 'The document below is my original supplied CV. The download link opens the same Turkish PDF.'}
+      </p>
+    </div>
+    <div class="cv-page-previews">
+      {[cvPageOne, cvPageTwo].map((page, index) => (
+        <figure class="cv-page-preview">
+          <Image
+            src={page}
+            widths={[640, 960, 1440]}
+            sizes="(max-width: 760px) calc(100vw - 40px), 900px"
+            width={1000}
+            format="webp"
+            quality={90}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            alt={
+              tr
+                ? `Orijinal CV — sayfa ${index + 1}: ${index === 0 ? 'profesyonel profil ve deneyim' : 'teknik yetkinlikler, eğitim, sertifikalar ve dil bilgisi'}`
+                : `Original Turkish CV — page ${index + 1}: ${index === 0 ? 'professional profile and experience' : 'technical skills, education, certificates and languages'}`
+            }
+          />
+          <figcaption>
+            {tr ? 'Orijinal CV' : 'Original Turkish CV'} · {index + 1} / 2
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <article class="cv-sheet">
+      <h2>Muhammet Fatih Çetintaş</h2>
+      <p class="cv-title">{t.title}</p>
+      <p>
+        <a href="mailto:muhammedfatihcetintas54@gmail.com">muhammedfatihcetintas54@gmail.com</a> ·{' '}
+        <a href="https://github.com/M-Fatih-C">github.com/M-Fatih-C</a>
+      </p>
+      <h2>{t.summary}</h2>
+      <p>
+        {tr
+          ? 'Yazılım geliştirme, backend, uygulamalı yapay zekâ, makine öğrenmesi, veri analitiği ve sistem entegrasyonu alanlarında çalışıyorum. Kurumsal altyapı ve uygulama desteği deneyimimi bağımsız yazılım ve araştırma projeleriyle birleştiriyorum.'
+          : 'I work across software and backend development, applied AI, machine learning, data analytics and systems integration. I combine enterprise infrastructure and application support experience with independent software and research projects.'}
+      </p>
+      <h2>{tr ? 'Profesyonel deneyim' : 'Professional experience'}</h2>
+      {experience[lang].map((row) => (
+        <article>
+          <h3>
+            {row.company} · {row.role}
+          </h3>
+          <p>
+            <strong>{row.date}</strong>
+          </p>
+          <p>{row.summary}</p>
+          <p>{row.tech}</p>
+        </article>
+      ))}
+      <h2>{tr ? 'Eğitim' : 'Education'}</h2>
+      {education[lang].map((row) => (
+        <article>
+          <h3>
+            {row.school} · {row.program}
+          </h3>
+          <p>
+            {row.degree} · {row.status}
+          </p>
+        </article>
+      ))}
+      <h2>{tr ? 'Seçilmiş çalışmalar' : 'Selected work'}</h2>
+      <p>
+        MiniGPT-M4 · Finansım · OSINT Framework · TenderAI · MacPilot · Tanita / OSAS · EEG / ALS
+      </p>
+      <h2>{tr ? 'Teknik odak' : 'Technical focus'}</h2>
+      <p>
+        Python · FastAPI · PyTorch · MLX · scikit-learn · SQL · Swift · TypeScript · GitHub Actions
+      </p>
+      <p class="cv-note">
+        {tr
+          ? 'Bu HTML bölümü erişilebilir bir kısa özettir. Tam CV, yukarıdaki orijinal PDF belgesidir.'
+          : 'This HTML section provides an accessible brief summary. The complete CV is the original PDF above.'}
+      </p>
+    </article>
+  </div>
+</Layout>

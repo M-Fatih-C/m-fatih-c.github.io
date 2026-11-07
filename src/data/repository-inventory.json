@@ -1,0 +1,90 @@
+[
+  {
+    "projectId": "minigpt-m4",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "finansim",
+    "repositoryVisibility": "private"
+  },
+  {
+    "projectId": "tenderai",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "macpilot",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "osint-framework",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "tanita-report-extractor",
+    "repositoryVisibility": "private"
+  },
+  {
+    "projectId": "eeg-als-research-toolkit",
+    "repositoryVisibility": "private"
+  },
+  {
+    "projectId": "sleep-apnea-risk-model",
+    "repositoryVisibility": "private"
+  },
+  {
+    "projectId": "ing-datathon",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "turkish-address-research",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "jarvis-core",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "jarvis-assistant",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "risemate-ios",
+    "repositoryVisibility": "private"
+  },
+  {
+    "projectId": "employee-badge-generator",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "minicpuz",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "enterprise-workflow-integration",
+    "repositoryVisibility": "private"
+  },
+  {
+    "projectId": "machine-learning-notebooks",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "healthcare-portal-ui",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "risemate-mobile-legacy",
+    "repositoryVisibility": "private"
+  },
+  {
+    "projectId": "gesture-media-control",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "python-cad-archive",
+    "repositoryVisibility": "public"
+  },
+  {
+    "projectId": "early-programming-archive",
+    "repositoryVisibility": "public"
+  }
+]

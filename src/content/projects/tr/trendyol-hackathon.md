@@ -1,0 +1,36 @@
+---
+{
+  'slug': 'trendyol-hackathon',
+  'title': 'Trendyol Hackathon',
+  'categories': ['competitions'],
+  'technologies': ['Hackathon'],
+  'status': 'prototype',
+  'featured': false,
+  'repositoryVisibility': 'none',
+  'year': null,
+  'sourceReferences': [],
+  'confidentialityLevel': 'self-reported',
+  'summary': 'Trendyol Hackathon çalışması; teknik kapsamı, takım rolü ve sonuç ayrıntıları genişletilmeden yarışma deneyimleri arasında temsil edilir.',
+  'description': 'Trendyol Hackathon çalışmamı yarışma deneyimlerimin bir parçası olarak paylaşıyorum. Bu tanıtım için ürün adı, teknik yığın, tarih veya sıralama bilgisi verilmediğinden bunlara ilişkin ayrıntı eklenmemiştir.',
+  'role': 'Hackathon çalışması. Takım rolü ve kişisel katkı ayrıntıları belirtilmediği için ek sorumluluklar atfedilmez.',
+  'problem': 'Bir hackathon bağlamında problem çözme ve geliştirme deneyimini temsil etmek; belirli bir yarışma problemi bu kayıtta açıklanmamıştır.',
+  'solution': 'Çalışma, bağımsız bir ticari ürün veya doğrulanmış başarı gibi sunulmadan yarışma geçmişinde yer alır.',
+  'architecture': ['Yarışma bağlamı', 'Çalışma deneyimi', 'Paylaşılan kapsamla sınırlı tanıtım'],
+  'features': ['Hackathon deneyiminin portföyde görünür olması.'],
+  'technicalChallenges': ['Eksik kapsam bilgisinden teknik ayrıntı türetmemek.'],
+  'decisions': ['Ödül veya derece iddiası eklememek.'],
+  'testing': ['Bu çalışma için test veya demo kaydı sağlanmadı.'],
+  'results': ['Yarışma çalışması, sahibinin beyanıyla envantere alındı.'],
+  'limitations':
+    [
+      'Tarih, teknik kapsam, takım rolü ve sıralama belirtilmemiştir.',
+      'Bağımsız bir doğrulama kaynağı sunulmuyor.',
+    ],
+  'projectId': 'trendyol-hackathon',
+  'lang': 'tr',
+  'images': [],
+  'sourceState': 'self-reported',
+  'order': 18,
+  'related': [],
+}
+---

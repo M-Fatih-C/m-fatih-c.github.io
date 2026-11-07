@@ -1,0 +1,34 @@
+---
+import { experience } from '../data/profile';
+import type { Lang } from '../lib/i18n';
+interface Props {
+  lang: Lang;
+  compact?: boolean;
+}
+const { lang, compact = false } = Astro.props;
+const rows = compact ? experience[lang].slice(0, 3) : experience[lang];
+---
+
+<div class="timeline">
+  {rows.map((row) => (
+    <article class="timeline-item">
+      <p class="time">{row.date}</p>
+      <h3>{row.company}</h3>
+      <p>
+        <strong>{row.role}</strong>
+      </p>
+      <p>{row.summary}</p>
+      {!compact && (
+        <details>
+          <summary>
+            {lang === 'tr'
+              ? 'Sorumluluklar ve teknik ortam'
+              : 'Responsibilities and technical context'}
+          </summary>
+          <p>{row.detail}</p>
+          <p>{row.tech}</p>
+        </details>
+      )}
+    </article>
+  ))}
+</div>

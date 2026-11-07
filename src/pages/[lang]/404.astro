@@ -1,0 +1,20 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { languages, labels, path, type Lang } from '../../lib/i18n';
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang,
+  t = labels[lang];
+---
+
+<Layout lang={lang} title="404" noindex>
+  <div class="shell not-found">
+    <p class="error-code">404</p>
+    <h1>{t.notFound}</h1>
+    <p>{t.notFoundText}</p>
+    <a class="button" href={path(lang, 'projects')}>
+      {t.explore}
+    </a>
+  </div>
+</Layout>

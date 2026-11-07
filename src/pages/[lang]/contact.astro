@@ -1,0 +1,66 @@
+---
+import { ArrowUpRight, CodeXml as Github, ContactRound as Linkedin, FileDown } from '@lucide/astro';
+import Layout from '../../layouts/Layout.astro';
+import { languages, labels, path, type Lang } from '../../lib/i18n';
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang,
+  t = labels[lang],
+  tr = lang === 'tr';
+---
+
+<Layout lang={lang} title={t.contact} section="contact">
+  <div class="shell">
+    <header class="page-head">
+      <p class="eyebrow">{tr ? 'İLETİŞİM BİLGİLERİ' : 'CONTACT DETAILS'}</p>
+      <h1>{tr ? 'İletişim' : 'Contact'}</h1>
+    </header>
+    <div class="contact-grid section" style="padding-top:10px">
+      <div>
+        <h2>{tr ? 'Yazılım ve araştırma iş birlikleri' : 'Software and research collaboration'}</h2>
+        <p>
+          {tr
+            ? 'Yazılım geliştirme, uygulamalı yapay zekâ, veri analitiği, entegrasyon ve araştırma iş birlikleri için iletişime geçebilirsin.'
+            : 'Get in touch about software development, applied AI, data analytics, integration or research collaboration.'}
+        </p>
+        <a class="contact-email" href="mailto:muhammedfatihcetintas54@gmail.com">
+          muhammedfatihcetintas54@gmail.com
+          <ArrowUpRight size={22} />
+        </a>
+        <p class="contact-note">
+          {tr
+            ? 'Bu site form verisi toplamaz; e-posta bağlantısı kendi posta uygulamanı açar.'
+            : 'This site does not collect form submissions; the email link opens your own mail application.'}
+        </p>
+      </div>
+      <div class="contact-options">
+        <a
+          class="contact-option"
+          href="https://github.com/M-Fatih-C"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Github size={21} />
+          GitHub
+          <ArrowUpRight size={18} />
+        </a>
+        <a
+          class="contact-option"
+          href="https://tr.linkedin.com/in/muhammet-fatih-%C3%A7etintas"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Linkedin size={21} />
+          LinkedIn
+          <ArrowUpRight size={18} />
+        </a>
+        <a class="contact-option" href={path(lang, 'cv')}>
+          <FileDown size={21} />
+          {t.cv}
+          <ArrowUpRight size={18} />
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
