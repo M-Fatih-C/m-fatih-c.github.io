@@ -38,7 +38,7 @@ yoktur; kurumsal çalışmalar anonimleştirilmiştir. Ürün ekranı gibi sunul
 görsel yoktur; çizimler kategori illüstrasyonu olarak açıkça adlandırılır.
 
 İndirme bağlantısı, sahibinin paylaştığı iki sayfalık orijinal 2026 CV PDF’sini
-değiştirmeden sunar. İngilizce sayfada belgenin Türkçe olduğu belirtilir. Deneyim,
+değiştirmeden sunar. İngilizce sayfa aynı belgenin ayrı, açıkça belirtilen İngilizce çevirisini sunar. Deneyim,
 eğitim ve dört sertifika kaydı bu CV’ye göre güncellenmiştir. Paylaşılan MFÇ
 görseli Astro ile duyarlı web görsellerine dönüştürülür; tasarımı değiştirilmez.
 12 proje çifti ek uygulama ayrıntıları içerir. Kısa giriş ve kaydırma animasyonları

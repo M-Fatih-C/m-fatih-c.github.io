@@ -93,5 +93,6 @@
         'detail': 'After module execution, the persisted job results feed Correlator and an optional summary component. In-process events and a Redis pub/sub bridge connect dashboard WebSocket updates to the same job identity. Separating the data model from presentation lets the CLI and dashboard share findings. That architecture also creates access and retention responsibilities for case notes, provider responses and reports. It does not resolve the known dependency advisories or the limitations of optional authentication.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

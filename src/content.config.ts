@@ -37,6 +37,7 @@ const projects = defineCollection({
       year: z.number().int().nullable(),
       status: z.enum(['active', 'prototype', 'research', 'demo', 'completed', 'archive']),
       featured: z.boolean(),
+      presentation: z.enum(['case-study', 'brief']).default('case-study'),
       repositoryVisibility: z.enum(['public', 'private', 'none']),
       githubUrl: z.url().optional(),
       demoUrl: z.url().optional(),

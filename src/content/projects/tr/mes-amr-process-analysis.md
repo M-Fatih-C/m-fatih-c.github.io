@@ -60,5 +60,6 @@
         'detail': 'Entegrasyon çalışması teknik arayüzün yanında uygulamanın sahada nasıl kullanılacağını da kapsar. Uygulama hatalarının analizi, teknik dokümantasyon, kullanıcı eğitimi ve kabul kontrollerini destekliyorum. Yazılım, otomasyon ve operasyon ekipleri arasında teknik koordinasyon bu rolün bir parçasıdır. Bu deneyim mevcut sistemlerdeki analiz ve doğrulama katkımı ifade eder; tüm platformun kişisel olarak tasarlandığı anlamına gelmez.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

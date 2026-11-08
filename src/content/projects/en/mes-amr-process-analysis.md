@@ -62,5 +62,6 @@
         'detail': 'Integration work includes how the application will be used on site as well as its technical interface. I support analysis of application faults, technical documentation, user training and acceptance checks. Technical coordination between software, automation and operations teams is part of the role. This describes my analysis and validation contribution to existing systems, rather than sole authorship of the platform.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

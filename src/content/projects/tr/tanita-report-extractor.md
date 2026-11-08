@@ -78,5 +78,6 @@
         'detail': 'Bir ayrıştırma hatasını incelemek için ham PDF metnini diske yazmak, sağlık bilgilerini ek dosyalara çoğaltabilir. İnceleme dalındaki değişiklik bu davranışı varsayılan olarak kapatır ve yalnızca açık etkinleştirmeyle çalıştırır. Sentetik testler kayıt davranışını doğrular. Bu iyileştirme, Excel çıktısının saklanması, dosya adları veya geçmiş kayıtların yönetimi gibi diğer gizlilik sorumluluklarının yerine geçmez.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

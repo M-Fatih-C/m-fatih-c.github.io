@@ -69,6 +69,7 @@ for (const [id, versions] of groups) {
     'categories',
     'technologies',
     'status',
+    'presentation',
     'repositoryVisibility',
     'related',
   ])

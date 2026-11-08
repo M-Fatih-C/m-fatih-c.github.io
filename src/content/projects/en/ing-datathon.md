@@ -98,5 +98,6 @@
         'detail': 'The weighted ensemble combines model probabilities using normalized ING scores from temporal validation; average and median alternatives also exist. The score function combines Gini, recall@10 and lift@10 through defined baseline ratios. This explicitly connects model weighting to the competition’s ranking-oriented objective. Reusing validation scores for weights does not remove the need for independent final evaluation. The narrative describes the implemented calculation path, without asserting a new leaderboard result or a verified improvement over another model.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

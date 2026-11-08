@@ -3,42 +3,60 @@
   'slug': 'handora',
   'title': 'HANDORA',
   'categories': ['vision', 'software'],
-  'technologies': ['Computer Vision', 'Gesture Interaction'],
+  'technologies':
+    ['MediaPipe', 'TensorFlow Lite', 'Computer Vision', 'Hand Tracking', 'Gesture Interaction'],
   'status': 'prototype',
   'featured': false,
   'repositoryVisibility': 'none',
   'year': null,
   'sourceReferences': [],
   'confidentialityLevel': 'self-reported',
-  'summary': 'An independent exploration of computer control through camera input and hand gestures, presented separately from the older media-control prototype.',
-  'description': 'HANDORA is my independent work on controlling a computer through camera-observed hand gestures. This account presents the concept and interaction area; an accessible source repository or detailed validation report is not supplied.',
-  'role': 'Independent exploration of camera and hand-gesture interaction. The detailed contribution scope is not extended beyond that description.',
-  'problem': 'Explore an interaction method that controls a computer through hand gestures without physical contact.',
-  'solution': 'Examine the relationship between camera input, gesture interpretation and control commands. A specific model, SDK or operating system has not been identified in this account.',
+  'summary': 'Experimental computer-control prototype using MediaPipe/TFLite hand tracking, with the left hand controlling the cursor and the right hand handling clicks and scrolling.',
+  'description': 'HANDORA is my independent prototype exploring computer input through camera-based hand tracking. The MediaPipe/TFLite approach assigns different roles to each hand: the left hand controls the cursor, while the right hand handles clicking and scrolling. Hand detection and control stability remain development limitations. The work is distinct from the earlier media-control prototype.',
+  'role': 'Prototype development combining MediaPipe/TFLite hand tracking with two-handed interaction: left-hand cursor control and right-hand clicking/scrolling.',
+  'problem': 'Camera-based touchless computer control needs to distinguish cursor movement, clicking and scrolling. Losing a hand track or interpreting unintended motion as a command can make the interaction unstable.',
+  'solution': 'The prototype uses a MediaPipe/TFLite-based hand-tracking approach. Left-hand movements map to cursor control, while right-hand movements handle clicking and scrolling. This separates gesture interpretation from computer-input generation. Detection and stability issues remain open parts of the prototype rather than solved capabilities.',
   'architecture':
     [
-      'Visual input from a camera',
-      'Interpretation of hand gestures',
-      'Commands for computer control',
+      'Camera image input',
+      'MediaPipe/TFLite-based hand tracking',
+      'Left hand: cursor control / right hand: clicking and scrolling',
+      'Conversion of interpreted gestures into computer-control commands',
     ],
-  'features': ['A focus on camera-based interaction.', 'Computer control through hand gestures.'],
+  'features':
+    [
+      'Camera-based hand tracking.',
+      'Cursor control with the left hand.',
+      'Clicking and scrolling with the right hand.',
+      'A prototype assigning different control roles to the two hands.',
+    ],
   'technicalChallenges':
     [
-      'Separating intentional commands from incidental movement.',
-      'Evaluating interaction latency and changing usage conditions.',
+      'Maintaining stable control when hand detection or tracking is lost.',
+      'Cursor jitter, gesture stability and unintended commands.',
+      'Effects of camera conditions, lighting and hand visibility on interaction.',
     ],
   'decisions':
     [
-      'Keep this work distinct from the historical gesture-media-control repository.',
-      'Do not add unsupported model or platform claims.',
+      'Assign cursor movement and clicking/scrolling to different hands.',
+      'Maintain a separate scope from the earlier gesture-media-control project.',
+      'Keep detection and stability problems visible as development limitations.',
     ],
-  'testing': ['No separate test or device-validation report was supplied for this account.'],
+  'testing':
+    [
+      'This technical account follows the prototype approach described by the project owner.',
+      'No separate validation report establishes measured detection accuracy, latency or device compatibility.',
+    ],
   'results':
-    ['The camera and gesture-control research area is represented from the owner’s description.'],
+    [
+      'An experimental control prototype separating left-hand cursor movement from right-hand clicking/scrolling.',
+      'The hand-tracking approach and remaining stability issues are documented.',
+    ],
   'limitations':
     [
-      'Performance, accessibility and platform compatibility are not presented as validated outcomes.',
-      'No live demo or public source link is supplied.',
+      'Hand detection and control stability require further development.',
+      'Platform compatibility, accessibility and performance are not presented as validated outcomes.',
+      'No live demo or publicly accessible source-code link is available.',
     ],
   'projectId': 'handora',
   'lang': 'en',
@@ -46,5 +64,6 @@
   'sourceState': 'self-reported',
   'order': 17,
   'related': ['gesture-media-control'],
+  'presentation': 'case-study',
 }
 ---

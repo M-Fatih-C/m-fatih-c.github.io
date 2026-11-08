@@ -98,5 +98,6 @@
         'detail': 'Weighted ensemble yolu model olasılıklarını zaman fold’larından elde edilen ING skorlarına göre normalize edilmiş ağırlıklarla topluyor; average ve median alternatifleri de bulunuyor. Skor fonksiyonu Gini, recall@10 ve lift@10 bileşenlerini tanımlanmış baseline oranlarıyla birleştiriyor. Böylece model seçimi ile yarışmanın sıralama odaklı amacı arasında açık bir bağ kuruluyor. Ağırlıkların aynı validation sonuçlarından türetilmesi bağımsız final değerlendirmesini gereksiz kılmıyor. Buradaki anlatım hesaplama yolunu açıklıyor; yeni leaderboard sonucu veya doğrulanmış üstünlük sunmuyor.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

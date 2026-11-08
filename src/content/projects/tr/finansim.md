@@ -78,5 +78,6 @@
         'detail': 'Uygulamanın yerel çalışması, dosyaların otomatik olarak şifrelendiği anlamına gelmez. Şifreli yedekleme katmanını canlı SQLite veritabanından ayrı değerlendirdim: yedeğin korunması, geri yükleme hedefi ve bütünlük kontrolü farklı sorumluluklardır. Geri yüklemeyi ayrı hedefte doğrulamak mevcut kayıtları korur. Canlı veritabanı ve içe aktarılan belgeler için cihazın erişim ve disk güvenliği ayrıca önem taşır.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

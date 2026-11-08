@@ -79,5 +79,6 @@
         'detail': 'Koleksiyondaki yerel ses yükleme prototipi, EEG sınıflandırma hattından ayrı bir bileşendir. Dosya adını güvenli biçime dönüştürmek ve kullanılamayan adları reddetmek, yüklenen dosyanın hedef dizin dışına yazılmasını sınırlandırır. İki sentetik regresyon testi bu dosya işleme davranışını ele alır. Bu testlerin sayısı EEG tahmin kalitesi, donanım uyumu veya klinik sonuç olarak yorumlanamaz.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

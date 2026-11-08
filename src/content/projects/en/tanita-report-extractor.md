@@ -78,5 +78,6 @@
         'detail': 'Writing raw PDF text to disk for debugging can duplicate health information into additional files. The improvement branch disables this behavior by default and requires explicit activation. Synthetic tests check the storage behavior. This change does not replace the separate responsibilities of managing spreadsheet outputs, filenames or historical records.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

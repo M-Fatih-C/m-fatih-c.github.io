@@ -98,5 +98,6 @@
         'detail': 'Chatbot bileşeni ana FAISS analiz yolundan farklı: yüklenen metni sınırlı bir context içinde tutuyor ve Gemini isteğine metnin ilk 20.000 karakteriyle son beş sohbet mesajını ekliyor. Bu nedenle uygulamadaki her soru-cevap akışını aynı retrieval mimarisi olarak anlatmak doğru olmaz. API anahtarı yoksa demo yoluna geçiliyor; kota ve servis hatalarında uyarılı demo yanıtı dönebiliyor. Bu ayrım, arayüzü incelemeyi kolaylaştırırken uzun belgenin sonundaki bilgilerin chatbot bağlamına girmeyebileceğini de açıkça gösteriyor.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

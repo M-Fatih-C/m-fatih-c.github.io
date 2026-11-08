@@ -78,5 +78,6 @@
         'detail': 'Running locally does not automatically encrypt the application files. I considered encrypted backups separately from the live SQLite database: backup protection, restore targets and integrity validation are distinct responsibilities. Checking a restore at a separate destination protects existing records. Access control and disk security on the device remain relevant for the live database and imported documents.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

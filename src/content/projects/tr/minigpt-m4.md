@@ -93,5 +93,6 @@
         'detail': 'MiniGPT.generate her yeni token için yalnızca modelin bağlam sınırı içindeki son tokenları kullanıyor. Son pozisyondaki logits, temperature ile ölçekleniyor; top-k seçilmişse daha düşük olasılıklı seçenekler maskeleniyor ve sonraki token multinomial örneklemeyle ekleniyor. Böylece üretim davranışı model forward geçişinden ayrı incelenebiliyor. Sabit bağlam penceresi yerel deneyi basitleştirirken uzun metnin eski bölümlerini dışarıda bırakıyor. Bu uygulamada KV-cache temelli hızlandırma iddiası veya ölçülmüş üretim hızına dayanan performans sonucu sunulmuyor.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

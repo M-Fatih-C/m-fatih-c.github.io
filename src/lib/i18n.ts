@@ -44,7 +44,7 @@ export const labels = {
     conceptual:
       'Kaynak açıklamalarından türetilmiş kavramsal akış; bir uygulama ekran görüntüsü değildir.',
     privateNote:
-      'Bu sayfa yalnızca genel teknik kapsamı paylaşır. Kaynak kodu, gerçek veri ve kuruma özel bilgiler yayımlanmaz.',
+      'Özel kaynak kodu; bu sayfada genel teknik özet paylaşılmaktadır. Kaynak dosyaları, gerçek veriler ve kuruma özel bilgiler kamuya açılmaz.',
     prNote:
       'Teknik anlatım açık iyileştirme PR’sindeki belgeleri de esas alır. PR’nin ana dala birleştirildiği veya ürünün yayımlandığı anlamına gelmez.',
     selfNote:
@@ -114,13 +114,13 @@ export const labels = {
     gallery: 'Gallery',
     conceptual: 'Conceptual flow derived from project descriptions; not an application screenshot.',
     privateNote:
-      'This page shares the general technical scope only. Source code, real records and organization-specific information remain private.',
+      'Private codebase; this page shares a general technical summary. Source files, real records and organization-specific information remain private.',
     prNote:
       'The technical account also draws on documentation in the open improvement PR. This does not imply that the PR has been merged or the product released.',
     selfNote:
       'This account is based on information supplied by the project owner; it does not assert independently verified performance or publication outcomes.',
     cv: 'View CV',
-    cvDownload: 'Download CV (Turkish PDF)',
+    cvDownload: 'Download CV (English PDF)',
     back: 'Back to projects',
     top: 'Back to top',
     theme: 'Change theme',

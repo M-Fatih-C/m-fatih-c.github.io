@@ -79,5 +79,6 @@
         'detail': 'The local audio-upload prototype is separate from the EEG classification workflow. Normalizing filenames and rejecting unusable names limits writes outside the intended destination directory. Two synthetic regression tests address this file-handling behavior. Their count cannot be interpreted as EEG prediction quality, hardware compatibility or a clinical outcome.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

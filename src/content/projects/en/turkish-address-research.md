@@ -88,5 +88,6 @@
   'confidentialityLevel': 'public',
   'order': 9,
   'related': ['ing-datathon', 'machine-learning-notebooks'],
+  'presentation': 'case-study',
 }
 ---

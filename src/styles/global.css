@@ -2029,3 +2029,60 @@ ul {
     display: none;
   }
 }
+
+/* Shorter project introductions retain optional technical context. */
+.case-layout-brief {
+  grid-template-columns: 190px minmax(0, 1fr);
+  max-width: 1060px;
+  margin-inline: auto;
+}
+.brief-role {
+  border-left: 2px solid var(--cyan);
+  padding-left: 18px;
+  margin-top: 24px;
+  font-size: 13px;
+}
+.brief-details {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  margin: 0 0 30px;
+}
+.brief-details summary {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 650;
+  padding: 20px 24px;
+  line-height: 1.6;
+}
+.brief-details-body,
+.brief-details > .source-links {
+  padding: 0 24px 24px;
+}
+.brief-details-body h3 {
+  margin: 25px 0 14px;
+  font-size: 19px;
+}
+.brief-details-body p,
+.brief-details-body li {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.brief-details-body ul {
+  padding-left: 20px;
+}
+.cv-original-link {
+  margin: 0 0 35px;
+}
+@media (max-width: 760px) {
+  .case-layout-brief {
+    grid-template-columns: 1fr;
+  }
+  .brief-details summary {
+    padding: 18px;
+  }
+  .brief-details-body {
+    padding-inline: 18px;
+  }
+}

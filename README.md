@@ -66,7 +66,7 @@ distinguished from application screenshots. Galleries accept real authorized
 images when available; none have been fabricated.
 
 The downloadable CV is the owner's original two-page 2026 PDF, preserved without
-changes. Both locales use this Turkish document and label its language. Experience,
+changes. The Turkish page uses that unchanged original; the English page offers an explicitly identified English translation based on the same document. Experience,
 education and four named certificates are based on that CV. No publication titles,
 awards or co-authorship have been invented. The owner-supplied MFÇ brand artwork
 is optimized by Astro for responsive use without changing its design. Twelve

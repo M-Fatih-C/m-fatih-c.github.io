@@ -93,5 +93,6 @@
         'detail': 'MiniGPT.generate uses only the most recent tokens within the model context limit for each next-token prediction. It scales the final-position logits by temperature, optionally masks choices outside top-k, then appends a multinomial sample. This makes sampling behavior inspectable independently of the model forward pass. A fixed context window simplifies the local experiment but discards earlier portions of long text. The implementation is not presented as KV-cache-accelerated generation, and no measured throughput claim follows from this code.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

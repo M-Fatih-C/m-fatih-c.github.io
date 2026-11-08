@@ -76,5 +76,6 @@
   'confidentialityLevel': 'public',
   'order': 22,
   'related': ['handora'],
+  'presentation': 'brief',
 }
 ---

@@ -96,5 +96,6 @@
         'detail': 'SQLite profil bileşeni key/value kayıtlarını tutuyor; encrypt seçeneği açık değerler AES-GCM ile şifrelenip okunurken çözülüyor. Şema ve anahtar adları açık kalıyor, şifrelenmemiş kayıt seçeneği de mevcut. Dolayısıyla profil şifrelemesini tüm veritabanı, log, Chroma index veya ses dosyaları için toplu gizlilik iddiasına dönüştürmek yanlış olur. Bu ayrım geliştirmede hangi verinin hangi depoda kaldığını tartışmayı mümkün kılıyor. Anahtar değişimi ayrıca erişilebilirlik ve migration konusu; mevcut içeriğin kendiliğinden yeniden şifrelendiği varsayılmıyor.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

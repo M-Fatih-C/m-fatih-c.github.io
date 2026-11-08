@@ -77,5 +77,6 @@
         'detail': 'A stratified training/test split precedes logistic regression, a classification summary, an ROC plot and coefficient inspection. Coefficients offer a starting point for examining how the model uses variables; they do not establish causality. Synthetic software tests check execution and rejection of invalid inputs. External validation, calibration and clinical-use evaluation remain outside this scope.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

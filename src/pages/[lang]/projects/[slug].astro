@@ -19,22 +19,29 @@ const { project } = Astro.props,
 const { Content } = await render(project);
 const all = await getProjects(lang);
 const related = all.filter((q) => p.related.includes(q.data.projectId)).slice(0, 3);
-const sections = [
-  ['overview', t.overview],
-  ['problem', t.problem],
-  ['role', t.role],
-  ['solution', t.solution],
-  ...(p.implementation.length
-    ? [['implementation', lang === 'tr' ? 'Uygulama ayrıntıları' : 'Implementation details']]
-    : []),
-  ['architecture', t.architecture],
-  ['features', t.features],
-  ['challenges', t.challenges],
-  ['decisions', t.decisions],
-  ['testing', t.testing],
-  ['results', t.results],
-  ['limitations', t.limitations],
-];
+const brief = p.presentation === 'brief';
+const sections = brief
+  ? [
+      ['overview', t.overview],
+      ['features', t.features],
+      ['status', lang === 'tr' ? 'Doğrulama ve mevcut durum' : 'Validation and current status'],
+    ]
+  : [
+      ['overview', t.overview],
+      ['problem', t.problem],
+      ['role', t.role],
+      ['solution', t.solution],
+      ...(p.implementation.length
+        ? [['implementation', lang === 'tr' ? 'Uygulama ayrıntıları' : 'Implementation details']]
+        : []),
+      ['architecture', t.architecture],
+      ['features', t.features],
+      ['challenges', t.challenges],
+      ['decisions', t.decisions],
+      ['testing', t.testing],
+      ['results', t.results],
+      ['limitations', t.limitations],
+    ];
 ---
 
 <Layout lang={lang} title={p.title} description={p.summary} section="projects">
@@ -71,7 +78,7 @@ const sections = [
           : 'Original code-generated category illustration; not a product screenshot.'}
       </p>
     </header>
-    <div class="case-layout">
+    <div class:list={['case-layout', { 'case-layout-brief': brief }]}>
       <aside class="case-sidebar">
         <p>{lang === 'tr' ? 'BU ÇALIŞMADA' : 'IN THIS CASE STUDY'}</p>
         <nav aria-label={lang === 'tr' ? 'Sayfa içi gezinme' : 'On this page'}>
@@ -87,70 +94,128 @@ const sections = [
         <section class="case-section" id="overview">
           <h2>{t.overview}</h2>
           <p>{p.description}</p>
+          {brief && (
+            <p class="brief-role">
+              <strong>{t.role}:</strong> {p.role}
+            </p>
+          )}
           <Content />
         </section>
-        <section class="case-section" id="problem">
-          <h2>{t.problem}</h2>
-          <p>{p.problem}</p>
-        </section>
-        <section class="case-section" id="role">
-          <h2>{t.role}</h2>
-          <p>{p.role}</p>
-        </section>
-        <section class="case-section" id="solution">
-          <h2>{t.solution}</h2>
-          <p>{p.solution}</p>
-        </section>
-        {p.implementation.length > 0 && (
-          <section class="case-section" id="implementation">
-            <h2>{lang === 'tr' ? 'Uygulama ayrıntıları' : 'Implementation details'}</h2>
-            <div class="implementation-notes">
-              {p.implementation.map((note, index) => (
-                <article class="implementation-note">
-                  <span class="note-index" aria-hidden="true">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3>{note.title}</h3>
-                    <p>{note.detail}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
-        <section class="case-section" id="architecture">
-          <h2>{t.architecture}</h2>
-          <div class="architecture-flow">
-            {p.architecture.map((step, index) => (
-              <>
-                {index > 0 && <div class="flow-connector" aria-hidden="true" />}
-                <div class="flow-step">
-                  <span class="step">{String(index + 1).padStart(2, '0')}</span>
-                  <p>{step}</p>
+        {brief ? (
+          <>
+            <section class="case-section" id="features">
+              <h2>{t.features}</h2>
+              <ul>
+                {p.features.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </section>
+            <section class="case-section" id="status">
+              <h2>
+                {lang === 'tr' ? 'Doğrulama ve mevcut durum' : 'Validation and current status'}
+              </h2>
+              <ul>
+                {[...p.testing, ...p.limitations].map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </section>
+            <details class="brief-details">
+              <summary>
+                {lang === 'tr'
+                  ? 'Ek teknik ayrıntıları göster'
+                  : 'Show additional technical details'}
+              </summary>
+              <div class="brief-details-body">
+                <h3>{t.problem}</h3>
+                <p>{p.problem}</p>
+                <h3>{t.solution}</h3>
+                <p>{p.solution}</p>
+                {[
+                  [t.architecture, p.architecture],
+                  [t.challenges, p.technicalChallenges],
+                  [t.decisions, p.decisions],
+                  [t.results, p.results],
+                ].map(([title, items]) => (
+                  <section>
+                    <h3>{title}</h3>
+                    <ul>
+                      {(items as string[]).map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </section>
+                ))}
+              </div>
+            </details>
+          </>
+        ) : (
+          <>
+            <section class="case-section" id="problem">
+              <h2>{t.problem}</h2>
+              <p>{p.problem}</p>
+            </section>
+            <section class="case-section" id="role">
+              <h2>{t.role}</h2>
+              <p>{p.role}</p>
+            </section>
+            <section class="case-section" id="solution">
+              <h2>{t.solution}</h2>
+              <p>{p.solution}</p>
+            </section>
+            {p.implementation.length > 0 && (
+              <section class="case-section" id="implementation">
+                <h2>{lang === 'tr' ? 'Uygulama ayrıntıları' : 'Implementation details'}</h2>
+                <div class="implementation-notes">
+                  {p.implementation.map((note, index) => (
+                    <article class="implementation-note">
+                      <span class="note-index" aria-hidden="true">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <h3>{note.title}</h3>
+                        <p>{note.detail}</p>
+                      </div>
+                    </article>
+                  ))}
                 </div>
-              </>
+              </section>
+            )}
+            <section class="case-section" id="architecture">
+              <h2>{t.architecture}</h2>
+              <div class="architecture-flow">
+                {p.architecture.map((step, index) => (
+                  <>
+                    {index > 0 && <div class="flow-connector" aria-hidden="true" />}
+                    <div class="flow-step">
+                      <span class="step">{String(index + 1).padStart(2, '0')}</span>
+                      <p>{step}</p>
+                    </div>
+                  </>
+                ))}
+              </div>
+              <p class="cover-caption">{t.conceptual}</p>
+            </section>
+            {[
+              ['features', t.features, p.features],
+              ['challenges', t.challenges, p.technicalChallenges],
+              ['decisions', t.decisions, p.decisions],
+              ['testing', t.testing, p.testing],
+              ['results', t.results, p.results],
+              ['limitations', t.limitations, p.limitations],
+            ].map(([id, title, items]) => (
+              <section class="case-section" id={id as string}>
+                <h2>{title}</h2>
+                <ul>
+                  {(items as string[]).map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </section>
             ))}
-          </div>
-          <p class="cover-caption">{t.conceptual}</p>
-        </section>
-        {[
-          ['features', t.features, p.features],
-          ['challenges', t.challenges, p.technicalChallenges],
-          ['decisions', t.decisions, p.decisions],
-          ['testing', t.testing, p.testing],
-          ['results', t.results, p.results],
-          ['limitations', t.limitations, p.limitations],
-        ].map(([id, title, items]) => (
-          <section class="case-section" id={id as string}>
-            <h2>{title}</h2>
-            <ul>
-              {(items as string[]).map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </section>
-        ))}
+          </>
+        )}
         {p.images.length > 0 && (
           <section class="case-section">
             <h2>{t.gallery}</h2>
@@ -168,22 +233,39 @@ const sections = [
             ))}
           </section>
         )}
-        <p class="callout">{p.sourceState === 'open-pr' ? t.prNote : t.selfNote}</p>
-        {p.sourceReferences.length > 0 && (
-          <section class="case-section">
-            <h2>{t.sources}</h2>
-            <ul class="source-links">
-              {p.sourceReferences.map((source) => (
-                <li>
-                  <a href={source.url} target="_blank" rel="noopener noreferrer">
-                    {source.label}
-                    <ArrowUpRight size={14} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
+        {p.repositoryVisibility !== 'private' && (
+          <p class="callout">{p.sourceState === 'open-pr' ? t.prNote : t.selfNote}</p>
         )}
+        {p.sourceReferences.length > 0 &&
+          (brief ? (
+            <details class="brief-details source-details">
+              <summary>{t.sources}</summary>
+              <ul class="source-links">
+                {p.sourceReferences.map((source) => (
+                  <li>
+                    <a href={source.url} target="_blank" rel="noopener noreferrer">
+                      {source.label}
+                      <ArrowUpRight size={14} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : (
+            <section class="case-section">
+              <h2>{t.sources}</h2>
+              <ul class="source-links">
+                {p.sourceReferences.map((source) => (
+                  <li>
+                    <a href={source.url} target="_blank" rel="noopener noreferrer">
+                      {source.label}
+                      <ArrowUpRight size={14} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
         {p.githubUrl && (
           <a class="button secondary" href={p.githubUrl} target="_blank" rel="noopener noreferrer">
             {t.github}

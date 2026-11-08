@@ -77,5 +77,6 @@
         'detail': 'Katmanlı eğitim/test ayrımından sonra lojistik regresyonla sınıflandırma özeti, ROC grafiği ve katsayı incelemesi üretilir. Katsayılar, modelin değişkenleri nasıl kullandığını incelemek için bir başlangıç sağlar; tek başına nedensellik göstermez. Sentetik yazılım testleri akışın çalışmasını ve hatalı girdilerin reddini kontrol eder. Dış doğrulama, kalibrasyon ve klinik kullanım değerlendirmesi bu kapsamın dışındadır.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

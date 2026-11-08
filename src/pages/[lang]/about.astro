@@ -1,5 +1,6 @@
 ---
 import { ArrowUpRight, Download, GraduationCap } from '@lucide/astro';
+import { cvPath } from '../../data/cv';
 import Layout from '../../layouts/Layout.astro';
 import Timeline from '../../components/Timeline.astro';
 import { education, certifications } from '../../data/profile';
@@ -93,7 +94,7 @@ const skills = [
             {t.cv}
             <ArrowUpRight size={17} />
           </a>
-          <a class="button secondary" href={`/cv/muhammet-fatih-cetintas-2026.pdf`} download>
+          <a class="button secondary" href={cvPath(lang)} download>
             <Download size={16} />
             {t.cvDownload}
           </a>

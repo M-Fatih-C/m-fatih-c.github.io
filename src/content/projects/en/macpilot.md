@@ -99,5 +99,6 @@
         'detail': 'After Bonjour discovery, client and agent use WSS/TLS and P256 challenge signatures, with shared models defining message types on both sides. However, adding an unknown first public key to the trusted-device store is different from explicit operator approval. Likewise, AES-GCM envelope helpers in SharedCore do not establish mandatory use by the active router. The engineering boundary is to keep these distinctions visible: encrypted transport alone cannot determine whether the first peer is authorized.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

@@ -96,5 +96,6 @@
         'detail': 'The SQLite profile component stores key/value records; values written with encryption enabled use AES-GCM and are decrypted on reads. Schema and key names remain visible, and unencrypted records are also supported. Profile encryption therefore cannot be generalized to the entire database, logs, Chroma indexes or voice files. This distinction makes storage boundaries explicit during development. Key changes introduce availability and migration concerns; existing content is not assumed to be automatically re-encrypted.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

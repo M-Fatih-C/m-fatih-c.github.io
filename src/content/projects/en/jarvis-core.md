@@ -98,5 +98,6 @@
         'detail': 'When approval is required, the runtime enters WAITING_APPROVAL and retains the pending call on the run. Approval verifies action integrity, consumes the authorization and executes the tool. Its result becomes a TOOL message in the context before the multi-step loop resumes. Rejection has its own transition and explanation. Step and tool-call limits still bound continuation. The contribution is an inspectable lifecycle for proposal, authority and execution, not a claim that every integration has passed live-service acceptance.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

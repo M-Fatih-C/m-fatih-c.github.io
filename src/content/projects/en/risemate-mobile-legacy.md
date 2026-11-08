@@ -65,5 +65,6 @@
   'sourceState': 'open-pr',
   'order': 21,
   'related': ['risemate-ios'],
+  'presentation': 'brief',
 }
 ---

@@ -42,10 +42,12 @@ Current generic category SVGs are not screenshots.
 
 Edit both locale arrays in `src/data/profile.ts`. Experience, education and named
 certificates are based on the supplied original 2026 CV. The HTML CV section is an
-accessible brief summary; the full document is `public/cv/muhammet-fatih-cetintas-2026.pdf`.
-Both locale downloads use this unchanged Turkish PDF, with an explicit language label
-on the English page. Replace the original only when the owner supplies a new CV;
-never regenerate or silently translate it. Keep download references consistent.
+accessible brief summary; the original document is `public/cv/muhammet-fatih-cetintas-2026.pdf`.
+The Turkish download preserves this original PDF unchanged. The English download uses
+`public/cv/muhammet-fatih-cetintas-2026-en.pdf`, a two-page translation of the same
+supplied CV. Both are selected centrally through `src/data/cv.ts`. Replace the
+Turkish original only when the owner supplies a new CV; identify translations
+explicitly and keep both locale references consistent.
 
 Named certificates use the titles, issuers and years in the supplied document.
 The DoS/DDoS certificate has no supplied year, so none is inferred. Publications
@@ -62,3 +64,17 @@ and the private-source boundary. Astro check validates the actual content schema
 and TypeScript. `check:links` checks the generated local routes, assets and anchors;
 external websites are outside that check. `check:privacy` scans specific leak
 patterns in source/output. These are complementary checks, not universal proofs.
+
+## Presentation depth
+
+`presentation: case-study` uses the full technical case-study layout.
+`presentation: brief` opens with three sections for smaller prototypes and
+archives, with further engineering context and sources in native expandable
+sections. All original narrative fields remain in the content files. Keep this
+setting consistent across both languages. Private-project notes describe private
+source and the shared technical summary; they never show the public-PR notice.
+
+HANDORA’s MediaPipe/TFLite, left-hand cursor and right-hand click/scroll scope
+is supplied by the owner. Detection and stability remain limitations; it does
+not imply independent performance or device validation. No new project screenshots
+or diagrams were added in this revision, as requested by the owner.

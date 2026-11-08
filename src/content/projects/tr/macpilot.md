@@ -99,5 +99,6 @@
         'detail': 'İstemci ile agent, Bonjour keşfinden sonra WSS/TLS bağlantısı ve P256 challenge imzaları kullanıyor; ortak modeller mesajların türünü iki tarafta da tanımlıyor. Buna rağmen ilk görülen bilinmeyen public key’in güvenilen cihaza eklenmesi açık bir operatör onayıyla aynı şey değil. Aynı şekilde SharedCore’daki AES-GCM envelope yardımcılarının bulunması aktif router’ın bunları zorunlu kullandığını göstermiyor. Projenin mühendislik sınırı bu iki ayrımı açık tutmak: bağlantının şifrelenmesi, ilk peer’in yetkili olduğuna tek başına karar vermiyor.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

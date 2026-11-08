@@ -3,43 +3,59 @@
   'slug': 'handora',
   'title': 'HANDORA',
   'categories': ['vision', 'software'],
-  'technologies': ['Computer Vision', 'Gesture Interaction'],
+  'technologies':
+    ['MediaPipe', 'TensorFlow Lite', 'Computer Vision', 'Hand Tracking', 'Gesture Interaction'],
   'status': 'prototype',
   'featured': false,
   'repositoryVisibility': 'none',
   'year': null,
   'sourceReferences': [],
   'confidentialityLevel': 'self-reported',
-  'summary': 'Kamera ve el hareketleriyle bilgisayar kontrolü üzerine bağımsız bir çalışma; eski medya kontrolü prototipinden ayrı ele alınır.',
-  'description': 'HANDORA, kamera üzerinden el hareketleriyle bilgisayarı kontrol etme fikrine odaklanan bağımsız çalışmamdır. Burada ürün fikrini ve etkileşim alanını paylaşıyorum; erişilebilir bir kaynak deposu veya ayrıntılı doğrulama raporu sunulmuyor.',
-  'role': 'Kamera ve el hareketleriyle etkileşim üzerine bağımsız çalışma. Ayrıntılı teknik katkı kapsamı burada genişletilmemiştir.',
-  'problem': 'Bilgisayarla fiziksel temas gerektirmeyen, el hareketleri üzerinden kontrol sağlayan bir etkileşim biçimini araştırmak.',
-  'solution': 'Kamera görüntüsü ile hareket yorumlama ve kontrol komutları arasındaki ilişkiyi ele almak. Kullanılan kesin model, SDK veya işletim sistemi bu tanıtımda belirtilmiyor.',
+  'summary': 'MediaPipe/TFLite tabanlı el takibiyle sol eli imleç yönetimine, sağ eli tıklama ve kaydırmaya ayıran deneysel bilgisayar kontrol prototipi.',
+  'description': 'HANDORA, kamera görüntüsünden el takibi yaparak bilgisayar girdisi üretmeyi araştırdığım bağımsız prototiptir. MediaPipe/TFLite tabanlı yaklaşımda iki ele farklı görevler verilir: sol el imleci yönlendirirken sağ el tıklama ve kaydırma hareketlerini kontrol eder. El algılama ve kontrol kararlılığı geliştirme sınırları olarak devam etmektedir; çalışma eski medya kontrolü prototipinden ayrıdır.',
+  'role': 'MediaPipe/TFLite tabanlı el takibini iki elli etkileşime dönüştüren prototip geliştirme; sol el ile imleç, sağ el ile tıklama/kaydırma görev ayrımı üzerine çalışma.',
+  'problem': 'Kamera üzerinden temas gerektirmeyen bilgisayar kontrolünde imleç hareketini, tıklamayı ve kaydırmayı birbirine karıştırmadan yorumlamak gerekir. Elin izini kaybetmek veya istemsiz hareketleri komut saymak kullanım kararlılığını bozabilir.',
+  'solution': 'El takibi için MediaPipe/TFLite tabanlı yaklaşım kullanılır. Sol elin hareketleri imleç yönetimine; sağ elin hareketleri tıklama ve scroll işlevlerine ayrılır. Bu görev ayrımı, hareket yorumlama ile bilgisayar girdisi üretimini ayrı sorumluluklar olarak ele alır. Algılama ve stabilite sorunları, prototipin henüz çözülmüş kabul edilmeyen parçalarıdır.',
   'architecture':
     [
-      'Kamera üzerinden görsel girdi',
-      'El hareketlerinin yorumlanması',
-      'Bilgisayar kontrolüne yönelik komutlar',
+      'Kameradan görüntü alma',
+      'MediaPipe/TFLite tabanlı el takibi',
+      'Sol el: imleç yönetimi / sağ el: tıklama ve kaydırma',
+      'Yorumlanan hareketlerin bilgisayar kontrol komutlarına dönüştürülmesi',
     ],
-  'features': ['Kamera tabanlı etkileşim odağı.', 'El hareketleriyle bilgisayar kontrolü.'],
+  'features':
+    [
+      'Kamera üzerinden el takibi.',
+      'Sol el ile imleç yönetimi.',
+      'Sağ el ile tıklama ve kaydırma işlevleri.',
+      'İki ele farklı kontrol görevleri veren prototip yaklaşımı.',
+    ],
   'technicalChallenges':
     [
-      'İstenmeyen hareketlerle amaçlı komutları ayırmak.',
-      'Etkileşim gecikmesi ve farklı kullanım koşullarını değerlendirmek.',
+      'Elin algılanamaması veya izinin kaybolması sırasında kontrolün kararlı kalması.',
+      'İmleç titremesi, hareket algılama kararlılığı ve istemsiz komutlar.',
+      'Kamera, ışık ve el görünürlüğü değişimlerinin etkileşime etkisi.',
     ],
   'decisions':
     [
-      'Eski gesture-media-control deposuyla aynı ürün gibi sunulmaması.',
-      'Teknik ayrıntısı belirtilmeyen model veya platform iddiası eklenmemesi.',
+      'İmleç hareketi ile tıklama/kaydırmayı farklı ellere ayırmak.',
+      'Eski gesture-media-control çalışmasıyla ayrı proje kapsamını korumak.',
+      'Algılama ve stabilite sorunlarını giderilmiş bir özellik gibi sunmamak.',
     ],
-  'testing': ['Bu tanıtım için ayrı bir test veya cihaz doğrulama raporu sağlanmadı.'],
+  'testing':
+    [
+      'Bu teknik açıklama, proje sahibinin paylaştığı prototip yaklaşımına dayanır.',
+      'Ölçülmüş algılama başarısı, gecikme veya cihaz uyumluluğu için ayrı bir doğrulama raporu sunulmamıştır.',
+    ],
   'results':
     [
-      'Kamera ve el hareketleriyle kontrol çalışma alanı, sahibinin açıklamasına göre temsil edildi.',
+      'Sol el ile imleç, sağ el ile tıklama/kaydırma görev ayrımına dayalı deneysel kontrol prototipi.',
+      'Kullanılan el takibi yaklaşımı ve devam eden kararlılık sorunları açıklığa kavuşturuldu.',
     ],
   'limitations':
     [
-      'Performans, erişilebilirlik ve platform uyumluluğu doğrulanmış sonuçlar olarak sunulmuyor.',
+      'El algılama ve kontrol stabilitesi üzerinde geliştirme gerekmektedir.',
+      'Platform uyumluluğu, erişilebilirlik ve performans doğrulanmış sonuçlar olarak sunulmaz.',
       'Canlı demo veya herkese açık kaynak kodu bağlantısı bulunmuyor.',
     ],
   'projectId': 'handora',
@@ -48,5 +64,6 @@
   'sourceState': 'self-reported',
   'order': 17,
   'related': ['gesture-media-control'],
+  'presentation': 'case-study',
 }
 ---

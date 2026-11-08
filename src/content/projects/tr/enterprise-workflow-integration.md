@@ -61,5 +61,6 @@
   'sourceState': 'open-pr',
   'order': 15,
   'related': ['mes-amr-process-analysis'],
+  'presentation': 'case-study',
 }
 ---

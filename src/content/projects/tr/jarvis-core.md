@@ -98,5 +98,6 @@
         'detail': 'Runtime, onay gerektiğinde WAITING_APPROVAL durumuna geçiyor ve bekleyen çağrıyı run üzerinde tutuyor. Onay geldiğinde action bütünlüğü kontrol edilip onay tüketiliyor; executor sonucu TOOL mesajı olarak bağlama ekleniyor ve çok adımlı döngü yeniden başlıyor. Kullanıcı reddi de ayrı durum geçişi ve açıklama olarak işleniyor. Step ve tool-call limitleri bu devam yolunda da uygulanıyor. Bu tasarımın katkısı öneri, yetki ve yürütmenin okunabilir bir yaşam döngüsüne dönüşmesi; bütün entegrasyonların gerçek servislerde doğrulandığı iddiası değil.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

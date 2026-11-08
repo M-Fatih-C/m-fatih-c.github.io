@@ -98,5 +98,6 @@
         'detail': 'The chatbot is separate from the main FAISS analysis path. It retains a bounded document context and sends the first 20,000 characters plus the last five conversation messages to Gemini. Consequently, not every question-answer flow should be described as the same retrieval architecture. Without a usable key it follows a demo path; quota or service failures can return a labeled demo fallback. This enables interface exploration while making clear that information near the end of a long document may be absent from chatbot context.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---

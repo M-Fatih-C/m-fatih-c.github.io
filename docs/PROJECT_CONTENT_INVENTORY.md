@@ -39,7 +39,7 @@ Reviewed 7–8 November 2026. GitHub inventory: 22 repositories, 15 public and 7
 - Trendyol Hackathon is included from the owner’s account without invented dates, stack, ranking or awards.
 - Tanita, OSAS and EEG/ALS research remains non-clinical. Academic contribution is not relabeled as co-authorship.
 - Exact project years were not established; year values remain null. The year filter supports future evidenced dates.
-- The owner supplied an original two-page 2026 CV; downloads preserve that PDF unchanged. Both locales identify the document as Turkish.
+- The owner supplied an original two-page 2026 CV; downloads preserve that PDF unchanged. The Turkish original is preserved; the English locale now links to a separate English translation.
 - Four named certificates, experience dates and education details are taken from that CV; the certificate without a year remains undated. No publication or co-authorship record is asserted.
 - Twelve project pairs contain additional implementation sections grounded in public code, the existing approved high-level project scope and the supplied CV. Aggregate research counts describe contribution scope, not clinical accuracy.
 

@@ -12,6 +12,7 @@ import {
 } from '@lucide/astro';
 import { Image } from 'astro:assets';
 import brandImage from '../../assets/mfc-logo.jpg';
+import { cvPath } from '../../data/cv';
 import Layout from '../../layouts/Layout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import Timeline from '../../components/Timeline.astro';
@@ -113,7 +114,7 @@ const areas = tr
             LinkedIn
             <ArrowUpRight size={11} />
           </a>
-          <a href={`/cv/muhammet-fatih-cetintas-2026.pdf`} download>
+          <a href={cvPath(lang)} download>
             <Download size={13} />
             {t.cvDownload}
           </a>

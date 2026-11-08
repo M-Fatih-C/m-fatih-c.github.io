@@ -76,5 +76,6 @@
   'confidentialityLevel': 'public',
   'order': 23,
   'related': [],
+  'presentation': 'brief',
 }
 ---

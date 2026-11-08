@@ -64,5 +64,6 @@
   'sourceState': 'open-pr',
   'order': 12,
   'related': ['risemate-mobile-legacy', 'macpilot'],
+  'presentation': 'case-study',
 }
 ---

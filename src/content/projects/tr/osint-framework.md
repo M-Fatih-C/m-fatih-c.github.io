@@ -93,5 +93,6 @@
         'detail': 'Her modül çıktısı tamamlandıktan sonra job’un sonuçları Correlator’a aktarılıyor; isteğe bağlı özet bileşeni bu birleştirilmiş bağlam üzerinde çalışıyor. API içi olaylar ve Redis pub/sub köprüsü, dashboard’un WebSocket ilerlemesini ortak job kimliğine bağlıyor. Veri modeli ile arayüzün ayrılması CLI ve dashboard’un aynı sonuçları kullanmasını sağlıyor. Bunun karşılığında vaka notları, sağlayıcı yanıtları ve raporlar için erişim/retention kuralları gerekiyor; mevcut bağımlılık advisory’leri ile isteğe bağlı auth sınırı bu mimari anlatımla çözülmüş sayılmıyor.',
       },
     ],
+  'presentation': 'case-study',
 }
 ---
